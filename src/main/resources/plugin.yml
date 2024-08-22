@@ -1,0 +1,6 @@
+name: ImagineUtils
+version: '1.0'
+main: com.github.ImagineForgee.imagineUtils.ImagineUtils
+api-version: '1.18'
+load: STARTUP
+authors: [ ImagineForgee ]
