@@ -1,17 +1,25 @@
 package com.github.ImagineForgee.imagineUtils;
 
-import org.bukkit.plugin.java.JavaPlugin;
+import com.github.ImagineForgee.imagineUtils.placeholder.IPlaceholderManager;
+import com.github.ImagineForgee.imagineUtils.placeholder.PlaceholderManager;
+import com.github.ImagineForgee.imagineUtils.placeholder.PlaceholderUtils;
+import org.bukkit.entity.Player;
 
-public final class ImagineUtils extends JavaPlugin {
+public class ImagineUtils {
+    private final IPlaceholderManager placeholderManager;
 
-    @Override
-    public void onEnable() {
-        // Plugin startup logic
-
+    public ImagineUtils() {
+        this.placeholderManager = new PlaceholderManager();
+        PlaceholderUtils.registerCommonPlaceholders(placeholderManager);
     }
 
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    public IPlaceholderManager getPlaceholderManager() {
+        return placeholderManager;
+    }
+    public String parsePlayerPlaceholders(Player player, String text) {
+        return PlaceholderUtils.replacePlaceholders(placeholderManager, player, text);
+    }
+    public boolean isPlaceholderFormatValid(String placeholder) {
+        return PlaceholderUtils.validatePlaceholderFormat(placeholder);
     }
 }
